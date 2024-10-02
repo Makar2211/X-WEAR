@@ -8,7 +8,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "../ui/pagination";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "../../lib/utils";
 
 interface Props {
   className?: string;

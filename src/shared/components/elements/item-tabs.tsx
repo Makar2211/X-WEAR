@@ -3,7 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import { Color } from "@prisma/client";
 import Link from "next/link";
 import { Check, ChevronRight } from "lucide-react";
-import { deliveryTabs } from "@/shared/constants";
+import { deliveryTabs } from "../../constants";
 import Image from "next/image";
 import {
   Accordion,
@@ -11,7 +11,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../ui/accordion";
-import { IReturnProductProps } from "@/app/sneakers/[id]/page";
+import { IReturnProductProps } from "@/src/app/sneakers/[id]/page";
 
 type PropsFullInfoProduct = {
   className?: string;

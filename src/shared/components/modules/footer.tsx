@@ -1,8 +1,8 @@
 "use client";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "../../lib/utils";
 import React, { useEffect, useState } from "react";
 import { Container } from "../elements";
-import { navBarFooter } from "@/shared/constants/nav-bar-top";
+import { navBarFooter } from "../../constants/nav-bar-top";
 import Link from "next/link";
 import Image from "next/image";
 import { Input } from "../ui/input";

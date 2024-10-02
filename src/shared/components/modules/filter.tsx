@@ -1,5 +1,5 @@
 "use client";
-import { useFilter } from "@/shared/hooks";
+import { useFilter } from "../../hooks";
 
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect } from "react";
@@ -13,9 +13,9 @@ import {
   Sizes,
   ResetButton,
 } from "../elements/filterItems";
-import { IPropsFilterItems } from "@/shared/services/get-all-filters";
-import { createSoryByStore } from "@/shared/store";
-import { cn } from "@/shared/lib/utils";
+import { IPropsFilterItems } from "../../services/get-all-filters";
+import { createSoryByStore } from "../../store";
+import { cn } from "../../lib/utils";
 import { useMedia } from "react-use";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";

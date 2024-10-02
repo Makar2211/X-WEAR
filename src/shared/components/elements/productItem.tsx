@@ -1,4 +1,4 @@
-import { cn } from "@/shared/lib/utils";
+import { cn } from "../../lib/utils";
 import { Product } from "@prisma/client";
 import { Star } from "lucide-react";
 import Image from "next/image";

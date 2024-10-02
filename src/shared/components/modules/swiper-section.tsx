@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import React from "react";
 import { Container, SwiperBlog, SwiperItems } from "../elements";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "../../lib/utils";
 import Link from "next/link";
 import { Product } from "@prisma/client";
 

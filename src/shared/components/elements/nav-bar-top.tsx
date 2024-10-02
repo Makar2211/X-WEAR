@@ -9,7 +9,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "../ui/navigation-menu";
-import { navBar } from "@/shared/constants";
+import { navBar } from "../../constants";
 
 interface Props {
   className?: string;

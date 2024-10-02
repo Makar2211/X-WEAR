@@ -10,7 +10,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "../../ui/accordion";
-import { navBar } from "@/shared/constants";
+import { navBar } from "../../../constants";
 
 interface Props {}
 

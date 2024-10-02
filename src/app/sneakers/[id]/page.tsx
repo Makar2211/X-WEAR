@@ -1,14 +1,13 @@
-import {
-  Container,
-  SwiperItemImg,
-  SelectSize,
-  CartButton,
-  ItemTabs,
-} from "@/shared/components/elements";
-import { PropsSize } from "@/shared/components/elements/select-size";
-import { getSneakersProducts } from "@/shared/services";
 import { Brand, Color, Product } from "@prisma/client";
 import { Metadata } from "next";
+import {
+  CartButton,
+  Container,
+  ItemTabs,
+  SelectSize,
+  SwiperItemImg,
+} from "../../../shared/components/elements";
+import { PropsSize } from "../../../shared/components/elements/select-size";
 
 export type IReturnProductProps = Product & {
   sizes: PropsSize[];
@@ -16,25 +15,6 @@ export type IReturnProductProps = Product & {
   brand: Brand;
 };
 
-export async function generateStaticParams() {
-  try {
-    const products = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/products/sneakers`
-    ).then((res) => res.json());
-    if (!products) {
-      return {
-        notFound: true,
-      };
-    }
-
-    return products.map((product: Product) => ({
-      id: product.id.toString(),
-    }));
-  } catch (error) {
-    console.error("Failed to fetch sneakers products:", error);
-    return [];
-  }
-}
 export async function generateMetadata({
   params,
 }: {
@@ -57,10 +37,36 @@ export async function generateMetadata({
   };
 }
 
+/* export async function generateStaticParams() {
+  try {
+    const products = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/products/sneakers`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((res) => res.json());
+    if (!products) {
+      return {
+        notFound: true,
+      };
+    }
+
+    return products.map((product: Product) => ({
+      id: product.id.toString(),
+    }));
+  } catch (error) {
+    console.error("Failed to fetch sneakers products:", error);
+    return [];
+  }
+} */
+
 const getProduct = async (id: string): Promise<IReturnProductProps | null> => {
   try {
     const data = await fetch(
-      process.env.NEXT_PUBLIC_API_URL + `/api/products/sneakers/${id}`
+      `${process.env.NEXT_PUBLIC_API_URL}/api/products/sneakers/${id}`
     ).then((res) => res.json());
     return data;
   } catch (error) {

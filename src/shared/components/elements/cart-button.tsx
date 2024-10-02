@@ -1,10 +1,10 @@
 "use client";
-import { createSelectSize } from "@/shared/store/select-size";
+import { createSelectSize } from "../../store/select-size";
 import { Product } from "@prisma/client";
 import React from "react";
 import { Button } from "../ui/button";
 import { ChevronRight } from "lucide-react";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "../../lib/utils";
 
 interface Props {
   className?: string;

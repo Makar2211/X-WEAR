@@ -8,10 +8,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../ui/select";
-import { sortByArray } from "@/shared/constants/filter";
-import { createSoryByStore } from "@/shared/store";
+import { sortByArray } from "../../../constants/filter";
+import { createSoryByStore } from "../../../store";
 import { useRouter, useSearchParams } from "next/navigation";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "../../../lib/utils";
 
 interface Props {
   className?: string;
@@ -22,7 +22,7 @@ export const SortBy: React.FC<Props> = ({ className }) => {
   const sortByParams = searchParams.get("sortBy") || undefined;
 
   const { toggleSortBy } = createSoryByStore((state) => state);
-  
+
   const handleClick = (event: React.MouseEvent | React.TouchEvent) => {
     event.stopPropagation();
     event.preventDefault();

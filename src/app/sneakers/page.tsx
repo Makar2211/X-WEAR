@@ -1,8 +1,7 @@
-import qs from "qs";
-import { CatalogHeader, Container } from "@/shared/components/elements";
-import { CatalogItems, Filter } from "@/shared/components/modules";
-import { getAllFilters, getSneakersProducts } from "@/shared/services";
-
+import { CatalogHeader, Container } from "../../shared/components/elements";
+import { CatalogItems, Filter } from "../../shared/components/modules";
+import { getAllFilters, getSneakersProducts } from "../../shared/services";
+export const dynamic = "force-dynamic";
 export default async function Sneakers({
   searchParams,
 }: {

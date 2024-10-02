@@ -1,7 +1,7 @@
 import { X } from "lucide-react";
 import React from "react";
 import { Input } from "../../ui/input";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "../../../lib/utils";
 
 interface Props {
   className?: string;

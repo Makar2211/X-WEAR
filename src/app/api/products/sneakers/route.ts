@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "../../../../../prisma/prisma-client";
+import { prisma } from "@/prisma/prisma-client";
 
 export async function GET(req: NextRequest) {
   const sizesArray =
@@ -22,7 +22,7 @@ export async function GET(req: NextRequest) {
 
   const order =
     sortBy === "asc" || sortBy === "desc"
-      ? { price: sortBy } // Если передан параметр sortBy, сортируем по цене
+      ? { price: sortBy } 
       : { createdAt: "desc" };
 
   try {

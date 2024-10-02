@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
-import { prisma } from "../../../../../../prisma/prisma-client";
+import { prisma } from "@/prisma/prisma-client";
 
-export const dynamic = "force-static";
 export async function GET() {
   try {
     const data = await prisma.product.findMany({

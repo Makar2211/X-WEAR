@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "../../lib/utils";
 import { Minus, Plus } from "lucide-react";
 
 // Расширяем типы пропсов для включения `data-state`

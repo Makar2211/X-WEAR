@@ -7,9 +7,9 @@ import {
   AccordionTrigger,
 } from "../../ui/accordion";
 import { Slider } from "../../ui/slider";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "../../../lib/utils";
 import { Input } from "../../ui/input";
-import { IPriceProps } from "@/shared/hooks/useFilter";
+import { IPriceProps } from "../../../hooks/useFilter";
 
 interface Props {
   className?: string;

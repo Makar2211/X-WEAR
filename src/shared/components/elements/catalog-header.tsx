@@ -2,7 +2,7 @@
 import { Product } from "@prisma/client";
 import React from "react";
 import { SortBy } from "./filterItems";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "../../lib/utils";
 
 interface Props {
   title: string;

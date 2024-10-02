@@ -7,7 +7,7 @@ import {
   AccordionTrigger,
 } from "../../ui/accordion";
 import { CategoryProduct } from "@prisma/client";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "../../../lib/utils";
 
 interface Props {
   className?: string;

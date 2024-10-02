@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import { Product, Size } from "@prisma/client";
-import { createSelectSize } from "@/shared/store/select-size";
-import { cn } from "@/shared/lib/utils";
+import { createSelectSize } from "../../store/select-size";
+import { cn } from "../../lib/utils";
 
 export interface PropsSize {
   size: Size;

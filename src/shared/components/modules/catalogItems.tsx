@@ -1,5 +1,5 @@
 "use client";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "../../lib/utils";
 import { Product } from "@prisma/client";
 import { CatalogHeader, CatalogPagination, ProductItem } from "../elements";
 import React from "react";

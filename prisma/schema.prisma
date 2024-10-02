@@ -1,0 +1,97 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model Category {
+    id        Int       @id @default(autoincrement())
+    name      String
+    products  Product[] @relation("Product")
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+}
+
+model Product {
+    id   Int    @id @default(autoincrement())
+    name String
+
+    price             Int
+    imageUrl          String[]
+    brand             Brand?           @relation(name: "Brand", fields: [brandId], references: [id])
+    brandId           Int
+    colobarizations   String
+    artikul           String
+    category          Category         @relation(fields: [categoryId], references: [id], name: "Product")
+    categoryId        Int
+    categoryProduct   CategoryProduct  @relation(fields: [categoryProductId], references: [id], name: "CategoryProduct")
+    categoryProductId Int
+    sizes             ProductOnSize[]
+    colors            ProductOnColor[]
+    createdAt         DateTime         @default(now())
+    updatedAt         DateTime         @updatedAt
+}
+
+model CategoryProduct {
+    id              Int       @id @default(autoincrement())
+    name            String
+    url             String
+    categoryProduct Product[] @relation(name: "CategoryProduct")
+    createdAt       DateTime  @default(now())
+    updatedAt       DateTime  @updatedAt
+}
+
+model Size {
+    id            Int             @id @default(autoincrement())
+    size          String
+    productOnSize ProductOnSize[]
+    createdAt     DateTime        @default(now())
+    updatedAt     DateTime        @updatedAt
+}
+
+model ProductOnSize {
+    id        Int      @id @default(autoincrement())
+    product   Product  @relation(fields: [productId], references: [id])
+    productId Int
+    size      Size     @relation(fields: [sizeId], references: [id])
+    sizeId    Int
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Color {
+    id        Int              @id @default(autoincrement())
+    name      String
+    hexColor  String
+    createdAt DateTime         @default(now())
+    updatedAt DateTime         @updatedAt
+    product   ProductOnColor[]
+    productId Int?
+}
+
+model ProductOnColor {
+    id        Int      @id @default(autoincrement())
+    product   Product  @relation(fields: [productId], references: [id])
+    productId Int
+    color     Color    @relation(fields: [colorId], references: [id])
+    colorId   Int
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Brand {
+    id        Int       @id @default(autoincrement())
+    name      String
+    product   Product[] @relation(name: "Brand")
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+}

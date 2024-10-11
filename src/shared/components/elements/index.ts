@@ -1,4 +1,6 @@
 export { Container } from "./container";
+export { FormContainer } from "./form-container";
+export { CustomInput } from "./custom-input";
 export { NavBarTop } from "./nav-bar-top";
 export { HeaderExecutions } from "./header-executions";
 export { MobileMenu } from "./mobile/mobile-menu";
@@ -15,3 +17,6 @@ export { SwiperItemImg } from "./swiper-item-img";
 export { SelectSize } from "./select-size";
 export { CartButton } from "./cart-button";
 export { ItemTabs } from "./item-tabs";
+export { FormSwitcher } from "./form-switcher";
+export { SignInProvider } from "./sign-in-provider";
+export { LogOut } from "./log-out";

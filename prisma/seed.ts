@@ -40,6 +40,30 @@ async function up() {
   await prisma.productOnSize.createMany({
     data: productOnSize,
   });
+
+  await prisma.user.create({
+    data: {
+      email: "0k5dA@example.com",
+      password: "121123",
+      emailVerified: false,
+    },
+  });
+
+  await prisma.adress.create({
+    data: {
+      userId: 1,
+      name: "name",
+      last_name: "last_name",
+      telefone: "12312312",
+      neighborhoods: "neighborhoods",
+      index: "index",
+      apartment: "apartment",
+      name_of_company: "name_of_company",
+      street: "street",
+      city: "city",
+      country: "country",
+    },
+  });
 }
 
 async function down() {
@@ -51,6 +75,8 @@ async function down() {
   await prisma.$executeRaw`TRUNCATE TABLE "ProductOnSize" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "Size" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "CategoryProduct" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "User" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "Adress" RESTART IDENTITY CASCADE`;
 }
 async function main() {
   try {

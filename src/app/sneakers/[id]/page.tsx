@@ -39,16 +39,23 @@ export async function generateMetadata({
 
 /* export async function generateStaticParams() {
   try {
-    const products = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/products/sneakers`,
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/products/sneakers?category=krosovki`,
       {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
       }
-    ).then((res) => res.json());
-    if (!products) {
+    );
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch products: ${response.statusText}`);
+    }
+
+    const products = await response.json();
+
+    if (!products || products.length === 0) {
       return {
         notFound: true,
       };
@@ -58,8 +65,8 @@ export async function generateMetadata({
       id: product.id.toString(),
     }));
   } catch (error) {
-    console.error("Failed to fetch sneakers products:", error);
-    return [];
+    console.error("Error fetching product data:", error);
+    throw new Error("Failed to fetch products");
   }
 } */
 

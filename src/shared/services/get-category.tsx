@@ -1,5 +1,4 @@
-import React from "react";
-import { Category, CategoryProduct } from "@prisma/client";
+import { CategoryProduct } from "@prisma/client";
 import { IPropsCategory } from "../types";
 
 interface IRerurnProps {

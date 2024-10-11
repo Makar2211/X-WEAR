@@ -95,3 +95,29 @@ model Brand {
     createdAt DateTime  @default(now())
     updatedAt DateTime  @updatedAt
 }
+
+model User {
+    id            Int      @id @default(autoincrement())
+    email         String   @unique
+    password      String
+    emailVerified Boolean? @default(false)
+    createAt      DateTime @default(now())
+    updateAu      DateTime @updatedAt
+    Adress        Adress[]
+}
+
+model Adress {
+    id              Int     @id @default(autoincrement())
+    user            User    @relation(fields: [userId], references: [id])
+    userId          Int
+    name            String
+    last_name       String
+    name_of_company String?
+    country         String
+    street          String
+    apartment       String
+    city            String
+    neighborhoods   String
+    index           String
+    telefone        String
+}

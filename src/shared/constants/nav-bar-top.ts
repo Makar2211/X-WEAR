@@ -1,3 +1,5 @@
+import { getAllFilters } from "../services";
+
 export const navBar = [
   {
     name: "Одежда",

@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     theme: {
       screens: {
-        "mobile": { max: "425px" },
+        mobile: { max: "425px" },
         sm: { max: "640px" },
         // => @media (max-width: 640px) { ... }
 
@@ -37,10 +37,6 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
-      spacing: {
-        aboutdelivery:
-          "flex flex-row justify-between items-center w-full h-full",
-      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -59,6 +55,7 @@ const config: Config = {
         },
         primary: {
           DEFAULT: "hsl(var(--primary))",
+          10: "rgba(52, 144, 220, 0.1)",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {

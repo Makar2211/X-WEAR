@@ -34,3 +34,16 @@ export const SignInSchema = z.object({
 });
 
 export type SignInData = z.infer<typeof SignInSchema>;
+
+export const UpdateUserSchema = z.object({
+  email: z.string().email({
+    message: "Неверный формат почты",
+  }),
+  name: z.string().min(2, { message: "Имя должно быть больше одного символа" }),
+  last_name: z
+    .string()
+    .min(2, { message: "Фамилия должно быть больше одного символа" }),
+  phone: z.string(),
+});
+
+export type UpdateUserData = z.infer<typeof UpdateUserSchema>;

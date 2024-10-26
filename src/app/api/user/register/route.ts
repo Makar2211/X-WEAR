@@ -1,7 +1,7 @@
-import { prisma } from "@/prisma/prisma-client";
 import { NextResponse } from "next/server";
 import { hash } from "bcrypt";
 import { Resend } from "resend";
+import { prisma } from "../../../../../prisma/prisma-client";
 
 const resend = new Resend(process.env.RESEND_API_KEY!);
 

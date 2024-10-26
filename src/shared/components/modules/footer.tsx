@@ -1,27 +1,25 @@
 "use client";
-import { cn } from "../../lib/utils";
 import React, { useEffect, useState } from "react";
-import { Container } from "../elements";
-import { navBarFooter } from "../../constants/nav-bar-top";
 import Link from "next/link";
 import Image from "next/image";
-import { Input } from "../ui/input";
 import { ChevronRight } from "lucide-react";
 import { useMedia } from "react-use";
+import { cn } from "../../lib/utils";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "../ui/accordion";
-import { usePathname } from "next/navigation";
+import { Container } from "../elements";
+import { navBarFooter } from "../../constants/nav-bar-top";
+import { Input } from "../ui/input";
 
 interface Props {
   className?: string;
 }
 
 export const Footer: React.FC<Props> = ({ className }) => {
-  const pathname = usePathname();
   const [isClient, setIsClient] = useState(false);
   useEffect(() => {
     setIsClient(true);

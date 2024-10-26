@@ -59,7 +59,7 @@ export const SwiperItems: React.FC<Props> = ({
           <SwiperSlide key={item.id}>
             <ProductItem
               item={item}
-              className="w-[300px]"
+              className="flex"
               url_secrtion={"sneakers"}
             />
           </SwiperSlide>

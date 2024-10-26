@@ -11,7 +11,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../ui/accordion";
-import { IReturnProductProps } from "@/src/app/sneakers/[id]/page";
+import { IReturnProductProps } from "@/app/sneakers/[id]/page";
 
 type PropsFullInfoProduct = {
   className?: string;
@@ -28,31 +28,19 @@ export const ItemTabs: React.FC<PropsFullInfoProduct> = ({
       className="w-[60%] max-lg:w-[90%] max-sm:w-full justify-start mt-14"
     >
       <TabsList className="w-[400px] max-[425px]:w-full">
-        <TabsTrigger
-          className="data-[state=active]:text-blue-500  w-[100px]  justify-ceneter"
-          value="details"
-        >
+        <TabsTrigger className="items-tabs-trigger" value="details">
           Детали
         </TabsTrigger>
 
-        <TabsTrigger
-          className=" data-[state=active]:text-blue-500 w-[100px] justify-ceneter"
-          value="delivery"
-        >
+        <TabsTrigger className="items-tabs-trigger" value="delivery">
           <h3>Доставка</h3>
         </TabsTrigger>
 
-        <TabsTrigger
-          className=" data-[state=active]:text-blue-500 w-[100px] justify-ceneter"
-          value="checkout"
-        >
+        <TabsTrigger className="items-tabs-trigger" value="checkout">
           Оплата
         </TabsTrigger>
 
-        <TabsTrigger
-          className=" data-[state=active]:text-blue-500 w-[100px] justify-ceneter"
-          value="faq"
-        >
+        <TabsTrigger className="items-tabs-trigger" value="faq">
           FAQ
         </TabsTrigger>
       </TabsList>

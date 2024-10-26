@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
-import { Button } from "@/src/shared/components/ui/button";
-import { useSignUp } from "@/src/shared/hooks";
+import { Button } from "@/shared/components/ui/button";
+import { useSignUp } from "@/shared/hooks";
 import {
   CustomInput,
   FormContainer,
   FormSwitcher,
-} from "@/src/shared/components/elements";
+} from "@/shared/components/elements";
 
 export default function SignUp() {
   const { signUpRegister, signUpSubmit, error, signUpErrors } = useSignUp();

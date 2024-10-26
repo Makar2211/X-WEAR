@@ -111,7 +111,6 @@ export default async function FullSneakerPage({
           </h2>
 
           <SelectSize product={product} />
-          <CartButton product={product} />
         </div>
       </div>
 

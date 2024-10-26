@@ -1,6 +1,13 @@
+import { Metadata } from "next";
 import { CatalogHeader, Container } from "../../shared/components/elements";
 import { CatalogItems, Filter } from "../../shared/components/modules";
 import { getAllFilters, getSneakersProducts } from "../../shared/services";
+import { Suspense } from "react";
+
+export const metadata: Metadata = {
+  title: "X-WEAR | Обувь",
+  description: "Современная обувь с наилучшими ценами",
+};
 export const dynamic = "force-dynamic";
 export default async function Sneakers({
   searchParams,
@@ -25,14 +32,16 @@ export default async function Sneakers({
           className="hidden max-md:flex"
           products={products}
         />
-        <Filter
-          className="w-[320px]"
-          category={category}
-          brands={brands}
-          models={models}
-          size={size}
-          colors={colors}
-        />
+        <Suspense fallback={<>Loading...</>}>
+          <Filter
+            className="w-[320px]"
+            category={category}
+            brands={brands}
+            models={models}
+            size={size}
+            colors={colors}
+          />
+        </Suspense>
         {/* часть товаров */}
         <CatalogItems products={products} title="обувь" />
       </div>

@@ -8,6 +8,10 @@ html {
 	scroll-behavior: smooth;
 }
 
+.border {
+	border: 1px solid rgba(255, 255, 255, 0.11);
+}
+
 body {
 	position: relative;
 	min-height: 100%;
@@ -51,6 +55,20 @@ body {
 @layer utilities {
 	.text-balance {
 		text-wrap: balance;
+	}
+}
+
+@layer components {
+	.my-profile-tabs-trigger {
+		@apply w-full h-[130px] data-[state=active]:border-2 flex flex-col gap-1 items-center justify-center p-2 border-transparent;
+	}
+
+	.profile-tabs-trigger {
+		@apply flex data-[state=active]:border-l-2 data-[state=inactive]:border-transparent data-[state=active]:text-blue-500 gap-2 pl-5
+	}
+
+	.items-tabs-trigger {
+		@apply data-[state=active]:border-b-2 w-[100px] justify-center border-transparent;
 	}
 }
 

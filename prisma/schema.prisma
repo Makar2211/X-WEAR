@@ -39,6 +39,7 @@ model Product {
     colors            ProductOnColor[]
     createdAt         DateTime         @default(now())
     updatedAt         DateTime         @updatedAt
+    CartItem          CartItem[]
 }
 
 model CategoryProduct {
@@ -76,6 +77,7 @@ model Color {
     updatedAt DateTime         @updatedAt
     product   ProductOnColor[]
     productId Int?
+    cartId    Int?
 }
 
 model ProductOnColor {
@@ -100,18 +102,20 @@ model User {
     id            Int      @id @default(autoincrement())
     email         String   @unique
     password      String
+    name          String?
+    last_name     String?
+    phone         String?
     emailVerified Boolean? @default(false)
     createAt      DateTime @default(now())
     updateAu      DateTime @updatedAt
     Adress        Adress[]
+    Cart          Cart?
 }
 
 model Adress {
-    id              Int     @id @default(autoincrement())
-    user            User    @relation(fields: [userId], references: [id])
+    id              Int      @id @default(autoincrement())
+    user            User     @relation(fields: [userId], references: [id])
     userId          Int
-    name            String
-    last_name       String
     name_of_company String?
     country         String
     street          String
@@ -119,5 +123,34 @@ model Adress {
     city            String
     neighborhoods   String
     index           String
-    telefone        String
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
+}
+
+model Cart {
+    id          Int        @id @default(autoincrement())
+    totalAmount Int        @default(0)
+    user        User?      @relation(fields: [userId], references: [id])
+    userId      Int?       @unique
+    items       CartItem[]
+    createdAt   DateTime   @default(now())
+    updatedAt   DateTime   @updatedAt
+}
+
+model CartItem {
+    id        Int      @id @default(autoincrement())
+    product   Product  @relation(fields: [productId], references: [id])
+    productId Int
+    size      String
+    quantity  Int      @default(0)
+    cart      Cart?    @relation(fields: [cartId], references: [id])
+    cartId    Int?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+enum OrderStatus {
+    PENDING
+    SUCCEEDED
+    CANCELLED
 }

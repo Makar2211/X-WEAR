@@ -1,7 +1,7 @@
 "use client";
 import { useFilter } from "../../hooks";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import qs from "qs";
 import {
@@ -29,8 +29,6 @@ export const Filter: React.FC<IPropsFilterItems> = ({
   colors,
   className,
 }) => {
-  const searchParams = useSearchParams();
-  console.log(searchParams, "searchParams");
   const router = useRouter();
   const isMedia768 = useMedia("(max-width: 768px)");
 

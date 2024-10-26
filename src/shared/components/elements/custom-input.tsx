@@ -1,7 +1,6 @@
 "use client";
 import React, { HTMLInputTypeAttribute } from "react";
 import { Input } from "../ui/input";
-import { useSignUp } from "../../hooks";
 import { UseFormRegisterReturn } from "react-hook-form";
 
 interface InputProps {
@@ -19,7 +18,6 @@ export const CustomInput: React.FC<InputProps> = ({
   errorMessage,
   register,
 }) => {
-  const { signUpRegister } = useSignUp();
   return (
     <div className="mb-6 relative">
       <label className="block w-full bg-[#F9F9F9] px-4 rounded relative">

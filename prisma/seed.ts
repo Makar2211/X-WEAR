@@ -52,9 +52,6 @@ async function up() {
   await prisma.adress.create({
     data: {
       userId: 1,
-      name: "name",
-      last_name: "last_name",
-      telefone: "12312312",
       neighborhoods: "neighborhoods",
       index: "index",
       apartment: "apartment",
@@ -77,6 +74,8 @@ async function down() {
   await prisma.$executeRaw`TRUNCATE TABLE "CategoryProduct" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "User" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "Adress" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "CartItem" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "Cart" RESTART IDENTITY CASCADE`;
 }
 async function main() {
   try {

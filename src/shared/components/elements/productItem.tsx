@@ -27,7 +27,7 @@ export const ProductItem: React.FC<Props> = ({
       className={cn("flex flex-col items-start", className)}
       key={item.id}
     >
-      <div className="relative max-md:w-full">
+      <div className="relative w-full">
         <Image
           src={item.imageUrl[0]}
           alt={item.name}

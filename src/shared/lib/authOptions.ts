@@ -1,10 +1,10 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { prisma } from "@/prisma/prisma-client";
 import { compare, hashSync } from "bcrypt";
 import { randomBytes } from "crypto";
 import GitHubProvider from "next-auth/providers/github";
+import { prisma } from "../../../prisma/prisma-client";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -61,7 +61,7 @@ export const authOptions: NextAuthOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
+    async signIn({ user, account }) {
       if (account?.provider === "google" || account?.provider === "github") {
         const findUser = await prisma.user.findFirst({
           where: {
@@ -72,22 +72,31 @@ export const authOptions: NextAuthOptions = {
         if (findUser) {
           return true;
         }
+
+        const name = user?.name?.split(" ")[0] || "Пользователь";
+        const last_name = user?.name?.split(" ")[1] || "Пользователь";
         const randomPassword = randomBytes(16).toString("hex");
 
-        await prisma.user.create({
+        const userIsCreated = await prisma.user.create({
           data: {
             email: user.email as string,
+            name,
+            last_name,
             emailVerified: true,
             password: hashSync(randomPassword, 10),
           },
         });
       }
+
       return true;
     },
-    /* async jwt({ token, account, profile }) {
+    async jwt({ token, account, profile, user }) {
       if (!token.email) {
         return token;
       }
+
+      console.log(token, "TOKEEEN");
+
       const findUser = await prisma.user.findFirst({
         where: {
           email: token.email,
@@ -105,7 +114,7 @@ export const authOptions: NextAuthOptions = {
       }
 
       return session;
-    }, */
+    },
     async redirect({ url, baseUrl }) {
       return baseUrl;
     },

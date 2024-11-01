@@ -39,11 +39,20 @@ export const UpdateUserSchema = z.object({
   email: z.string().email({
     message: "Неверный формат почты",
   }),
-  name: z.string().min(2, { message: "Имя должно быть больше одного символа" }),
-  last_name: z
-    .string()
-    .min(2, { message: "Фамилия должно быть больше одного символа" }),
+  name: z.string().min(2, { message: "Обязательное поле" }),
+  last_name: z.string().min(2, { message: "Обязательное поле" }),
   phone: z.string(),
 });
 
 export type UpdateUserData = z.infer<typeof UpdateUserSchema>;
+
+export const CheckoutSchema = UpdateUserSchema.extend({
+  name_of_company: z.string(),
+  country: z.string(),
+  street: z.string().min(1, { message: "Обязательное поле" }),
+  apartment: z.string().min(1, { message: "Обязательное поле" }),
+  city: z.string().min(2, { message: "Обязательное поле" }),
+  neighborhoods: z.string().min(1, { message: "Обязательное поле" }),
+  index: z.string().min(1, { message: "Обязательное поле" }),
+});
+export type CheckoutData = z.infer<typeof CheckoutSchema>;

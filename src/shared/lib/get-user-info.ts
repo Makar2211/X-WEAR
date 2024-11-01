@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "../../../prisma/prisma-client";
 import { authOptions } from "./authOptions";
 
-export async function GetUseInfo() {
+export async function getUseInfo() {
   const session = await getServerSession(authOptions);
 
   try {

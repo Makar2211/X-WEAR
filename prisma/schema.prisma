@@ -99,22 +99,23 @@ model Brand {
 }
 
 model User {
-    id            Int      @id @default(autoincrement())
-    email         String   @unique
+    id            Int        @id @default(autoincrement())
+    email         String     @unique
     password      String
     name          String?
     last_name     String?
     phone         String?
-    emailVerified Boolean? @default(false)
-    createAt      DateTime @default(now())
-    updateAu      DateTime @updatedAt
+    emailVerified Boolean?   @default(false)
+    createAt      DateTime   @default(now())
+    updateAu      DateTime   @updatedAt
     Adress        Adress[]
     Cart          Cart?
+    checkout      Checkout[]
 }
 
 model Adress {
-    id              Int      @id @default(autoincrement())
-    user            User     @relation(fields: [userId], references: [id])
+    id              Int        @id @default(autoincrement())
+    user            User       @relation(fields: [userId], references: [id])
     userId          Int
     name_of_company String?
     country         String
@@ -123,8 +124,24 @@ model Adress {
     city            String
     neighborhoods   String
     index           String
-    createdAt       DateTime @default(now())
-    updatedAt       DateTime @updatedAt
+    createdAt       DateTime   @default(now())
+    updatedAt       DateTime   @updatedAt
+    Checkout        Checkout[]
+}
+
+model Checkout {
+    id              Int     @id @default(autoincrement())
+    user            User    @relation(fields: [userId], references: [id])
+    userId          Int
+    cart            Cart    @relation(fields: [cartId], references: [id])
+    cartId          Int     @unique()
+    adress          Adress? @relation(fields: [adressId], references: [id])
+    adressId        Int?
+    totalAmountCart Int
+
+    status    OrderStatus @default(PENDING)
+    createdAt DateTime    @default(now())
+    updatedAt DateTime    @updatedAt
 }
 
 model Cart {
@@ -135,6 +152,7 @@ model Cart {
     items       CartItem[]
     createdAt   DateTime   @default(now())
     updatedAt   DateTime   @updatedAt
+    Checkout    Checkout?
 }
 
 model CartItem {

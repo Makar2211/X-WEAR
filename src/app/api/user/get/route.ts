@@ -11,7 +11,8 @@ export async function GET(request: Request) {
         email: session?.user?.email as string,
       },
     });
-    return NextResponse.json(user);
+    const { password, ...userData } = user!;
+    return NextResponse.json(userData);
   } catch (error) {
     console.error("Failed to fetch user data:", error);
   }

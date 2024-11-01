@@ -1,5 +1,5 @@
 import { getUserCart } from "@/shared/lib/get-user-cart";
-import { GetUseInfo } from "@/shared/lib/get-user-info";
+import { getUseInfo } from "@/shared/lib/get-user-info";
 import { NextResponse, NextRequest } from "next/server";
 import { prisma } from "../../../../../prisma/prisma-client";
 
@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
   const { productItemId, size } = await request.json();
   try {
     let cart = await getUserCart().then((res) => res?.json());
-    const user = await GetUseInfo().then((res) => res?.json());
+    const user = await getUseInfo().then((res) => res?.json());
 
     if (!cart) {
       cart = await prisma.cart.create({

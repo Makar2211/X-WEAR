@@ -16,7 +16,7 @@ export default function SignIn() {
       <CustomInput
         label="Email адрес"
         errorMessage={signInErrors.email?.message}
-        placeholder="yavasyaivanov@gmail.com"
+        placeholder="Ваша почта"
         register={signInRegister("email")}
         type="email"
       />

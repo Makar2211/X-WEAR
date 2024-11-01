@@ -3,10 +3,11 @@ import React from "react";
 
 export const useGetUser = () => {
   const [userData, setUserData] = React.useState<null | User>(null);
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [isLoading, setIsLoading] = React.useState(false);
   React.useEffect(() => {
     (async () => {
       try {
+        setIsLoading(true);
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_API_URL}/api/user/get`,
           {
@@ -20,6 +21,8 @@ export const useGetUser = () => {
         setUserData(userData);
       } catch (error) {
         console.error("Ошибка при получении пользователя:", error);
+      } finally {
+        setIsLoading(false);
       }
     })();
   }, []);

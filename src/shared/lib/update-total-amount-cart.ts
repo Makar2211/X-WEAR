@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
 import { getUserCart } from "./get-user-cart";
-import { GetUseInfo } from "./get-user-info";
+import { getUseInfo } from "./get-user-info";
 import { User } from "@prisma/client";
 import { IProductsCart } from "../types";
 import { prisma } from "../../../prisma/prisma-client";
 
 export async function updateTotalAmountCart() {
   try {
-    const user: User = await GetUseInfo().then((res) => res?.json());
+    const user: User = await getUseInfo().then((res) => res?.json());
     const userCart = await getUserCart().then((res) => res?.json());
 
     if (!userCart) return null;

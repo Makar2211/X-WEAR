@@ -3,6 +3,7 @@ import React, { HTMLInputTypeAttribute, useRef } from "react";
 import { Input } from "../ui/input";
 import { UseFormRegisterReturn } from "react-hook-form";
 import { InputMask, useMask } from "@react-input/mask";
+import { cn } from "@/shared/lib/utils";
 
 interface InputProps {
   label: string;
@@ -10,6 +11,7 @@ interface InputProps {
   type: HTMLInputTypeAttribute;
   errorMessage?: string;
   register: UseFormRegisterReturn;
+  className?: string;
 }
 
 export const PhoneInput: React.FC<InputProps> = ({
@@ -18,9 +20,10 @@ export const PhoneInput: React.FC<InputProps> = ({
   type,
   errorMessage,
   register,
+  className,
 }) => {
   return (
-    <div className="mb-6 relative">
+    <div className={cn("mb-6 relative", className)}>
       <label className="block w-full bg-[#F9F9F9] px-4 rounded relative">
         <span className=" block pt-2 mb-[-10px] text-gray-700">{label}</span>
         <InputMask

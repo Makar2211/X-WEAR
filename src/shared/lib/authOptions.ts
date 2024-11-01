@@ -95,8 +95,6 @@ export const authOptions: NextAuthOptions = {
         return token;
       }
 
-      console.log(token, "TOKEEEN");
-
       const findUser = await prisma.user.findFirst({
         where: {
           email: token.email,

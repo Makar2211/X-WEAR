@@ -40,7 +40,7 @@ export const EditProfile: React.FC<Props> = ({ className }) => {
         />
         <CustomInput
           label="Email адрес"
-          placeholder="yavasyaivanov@gmail.com"
+          placeholder="Ваша почта"
           register={updateRegister("email")}
           type="email"
           errorMessage={updateErrors?.email?.message}

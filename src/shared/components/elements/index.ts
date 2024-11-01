@@ -26,3 +26,5 @@ export { TabsProfile } from "./tabs-profile";
 export { ProductCart } from "./product-cart";
 export { EmptyCart } from "./empty-cart";
 export { CartItemSkeleton } from "./cart-item-skeleton";
+export { CountryInput } from "./country-input";
+export { CheckoutSummary } from "./checkout-summary";

@@ -114,8 +114,8 @@ model User {
 }
 
 model Adress {
-    id              Int        @id @default(autoincrement())
-    user            User       @relation(fields: [userId], references: [id])
+    id              Int      @id @default(autoincrement())
+    user            User     @relation(fields: [userId], references: [id])
     userId          Int
     name_of_company String?
     country         String
@@ -124,9 +124,8 @@ model Adress {
     city            String
     neighborhoods   String
     index           String
-    createdAt       DateTime   @default(now())
-    updatedAt       DateTime   @updatedAt
-    Checkout        Checkout[]
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
 }
 
 model Checkout {
@@ -135,8 +134,13 @@ model Checkout {
     userId          Int
     cart            Cart    @relation(fields: [cartId], references: [id])
     cartId          Int     @unique()
-    adress          Adress? @relation(fields: [adressId], references: [id])
-    adressId        Int?
+    name_of_company String?
+    country         String
+    street          String
+    apartment       String
+    city            String
+    neighborhoods   String
+    index           String
     totalAmountCart Int
 
     status    OrderStatus @default(PENDING)

@@ -64,7 +64,7 @@ export const useCheckout = () => {
         }
       );
       const resData = await response.json();
-      if (!response.ok && resData.url) {
+      if (!response.ok) {
         throw new Error();
       }
 

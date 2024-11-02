@@ -90,8 +90,7 @@ export async function POST(request: NextRequest) {
       cancel_url: `${process.env.NEXT_PUBLIC_API_URL}/?canseled`,
       metadata: { orderId: order.id, cartId: cart.id },
     });
-
-    if (session.url) return NextResponse.json({ url: session.url });
+    return NextResponse.json({ url: session.url });
   } catch (error) {
     console.error("При оплате товаров произошла ошибка", error);
   }

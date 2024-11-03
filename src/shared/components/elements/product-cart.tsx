@@ -6,8 +6,6 @@ import { CircleX, Minus, Plus } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { IProductsCart } from "../../types";
 import { useCategoryProduct } from "../../hooks/use-category-product";
-import { useCart } from "../../hooks";
-import { useCartStore } from "../../store/cart";
 
 interface Props {
   className?: string;

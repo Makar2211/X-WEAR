@@ -85,8 +85,8 @@ export async function POST(request: NextRequest) {
         quantity: item.quantity,
       })),
       mode: "payment",
-      success_url: `${process.env.NEXT_PUBLIC_API_URL}/?paid`,
-      cancel_url: `${process.env.NEXT_PUBLIC_API_URL}/?canseled`,
+      success_url: `${process.env.NEXT_PUBLIC_API_URL}/?checkout=paid`,
+      cancel_url: `${process.env.NEXT_PUBLIC_API_URL}/?checkout=canseled`,
       metadata: { orderId: order.id, cartId: cart.id },
     });
     return NextResponse.json({ url: session.url });

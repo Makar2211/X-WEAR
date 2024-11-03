@@ -14,7 +14,7 @@ export const EditProfile: React.FC<Props> = ({ className }) => {
   const { userLoading, updateErrors, updateRegister, updateSubmit } =
     useUpdateUser();
 
-  if (!userLoading) {
+  if (userLoading) {
     return <div>Загрузка данных пользователя...</div>;
   }
   return (

@@ -102,7 +102,7 @@ export const PreviewSlider: React.FC<Props> = ({ className }) => {
                   ))}
                 </span>
                 <Link href={item.link}>
-                  <Button className="p-8 mt-6 gap-3" variant="default">
+                  <Button className="p-8 mt-6 gap-3" variant="blackandwhite">
                     <span className="font-extrabold text-[14px]">
                       {item.linkTitle}
                     </span>

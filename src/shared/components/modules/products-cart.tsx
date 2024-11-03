@@ -33,7 +33,7 @@ export const ProductsCart: React.FC<Props> = ({ className }) => {
       <ul className="flex flex-col justify-between items-center">
         {items.map((item: IProductsCart) => (
           <ProductCart
-            key={item.product.id} 
+            key={item.product.id}
             product={item}
             updateItemQuantity={updateItemQuantity}
             removeCartItem={removeCartItem}
@@ -41,7 +41,7 @@ export const ProductsCart: React.FC<Props> = ({ className }) => {
         ))}
       </ul>
       <Link href="/checkout" className="flex justify-center items-center mt-3">
-        <Button variant="blackandwhite" className="w-[220px] h-[66px]">
+        <Button variant="blackandwhite" className="w-[250px] h-[66px]">
           Перейти к оплате {totalAmount} UAH
         </Button>
       </Link>

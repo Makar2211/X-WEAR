@@ -48,8 +48,11 @@ export const Footer: React.FC<Props> = ({ className }) => {
                       collapsible
                       className="w-full flex flex-col items-normal"
                     >
-                      <AccordionItem value={item.name}>
-                        <AccordionTrigger className="justify-between">
+                      <AccordionItem
+                        value={item.name}
+                        className="border-b-white"
+                      >
+                        <AccordionTrigger className="justify-between text-white border-white">
                           {item.name}
                         </AccordionTrigger>
                         <AccordionContent>
@@ -85,9 +88,12 @@ export const Footer: React.FC<Props> = ({ className }) => {
                       collapsible
                       className="w-full flex flex-col items-normal"
                     >
-                      <AccordionItem value="contacts">
-                        <AccordionTrigger className="justify-between">
-                          КОНТАКТЫ
+                      <AccordionItem
+                        value="contacts"
+                        className="border-b-white"
+                      >
+                        <AccordionTrigger className="justify-between text-white ">
+                          Контакты
                         </AccordionTrigger>
                         <AccordionContent>
                           <li className="list-none">
@@ -148,7 +154,7 @@ export const Footer: React.FC<Props> = ({ className }) => {
                     </li>
 
                     <li className="">
-                      <h3 className="font-bold">МЕССЕНДЖЕРЫ</h3>
+                      <h3 className="font-bold text-white">МЕССЕНДЖЕРЫ</h3>
                       <div className="flex mt-1 gap-3">
                         <Image
                           src="/img/telegram.svg"

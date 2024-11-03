@@ -13,12 +13,16 @@ import Link from "next/link";
 import { Search } from "lucide-react";
 import { useCart } from "../../hooks";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
+import { useRouter, useSearchParams } from "next/navigation";
+import toast from "react-hot-toast";
 
 interface Props {
   className?: string;
 }
 
 export const Header: React.FC<Props> = ({ className }) => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [isClient, setIsClient] = React.useState(false);
   const [toggleSearch, setToggleSearch] = React.useState(false);
   const { items, loading, totalAmount } = useCart();
@@ -26,8 +30,33 @@ export const Header: React.FC<Props> = ({ className }) => {
   const isMedia768 = useMedia("(max-width: 768px)");
   const isMedia1200 = useMedia("(max-width: 1200px)");
 
+  console.log(searchParams.get("checkout"));
+
   React.useEffect(() => {
     setIsClient(true);
+	const checkout = searchParams.get("checkout")
+    let toastMessage = "";
+
+    if (checkout === 'paid') {
+      toastMessage = "Заказ успешно оплачен! Информация отправлена на почту.";
+    }
+
+    if (checkout === "canseled") {
+      setTimeout(() => {
+        router.push("/checkout");
+        toast.error("Не удалось оплатить вашу корзину", {
+          duration: 3000,
+        });
+      }, 1000);
+    }
+    if (toastMessage) {
+      setTimeout(() => {
+        router.replace("/");
+        toast.success(toastMessage, {
+          duration: 3000,
+        });
+      }, 1000);
+    }
   }, []);
 
   const handleSearch = () => {

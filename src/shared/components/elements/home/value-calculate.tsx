@@ -15,10 +15,10 @@ export const ValueCalculate: React.FC<Props> = ({ className }) => {
     <Container className="bg-custom-gradient  h-[630px] py-16 px-16 relative z-10 max-md:py-8 max-md:px-8 max-sm:px-2 max-[810px]:pt-4">
       <section className={cn("relative", className)}>
         <div className="relative">
-          <h2 className="font-black text-[51px] max-md:text-[34px]">
+          <h2 className="font-black text-white text-[51px] max-md:text-[34px]">
             РАССЧИТАТЬ <br /> СТОИМОСТЬ
           </h2>
-          <span className="font-normal text-[19px] mt-3 max-md:text-[14px] max-[450px]:text-[12px]">
+          <span className="font-normal text-[19px] text-white mt-3 max-md:text-[14px] max-[450px]:text-[12px]">
             Если вам не удалось найти то, что искали, вы всегда можете <br />
             воспользоваться автоматическим расчетом стоимость заказа на <br />
             маркетплейсе Poizon, включая комиссию сервиса и доставку. <br />
@@ -37,7 +37,7 @@ export const ValueCalculate: React.FC<Props> = ({ className }) => {
             <span className="w-[77px] h-[77px] rounded-full bg-primary text-white flex justify-center items-center border-[1px]">
               1
             </span>
-            <span className="font-semibold text-[16px]  leading-6">
+            <span className="font-semibold text-white text-[16px]  leading-6 ">
               Подробная, пошаговая <br /> статья о том, как установить <br />
               приложение Poizon
             </span>
@@ -46,7 +46,7 @@ export const ValueCalculate: React.FC<Props> = ({ className }) => {
             <span className="w-[77px] h-[77px] rounded-full bg-primary text-white flex justify-center items-center border-[1px]">
               2
             </span>
-            <span className="font-semibold text-[16px] leading-6">
+            <span className="font-semibold text-white text-[16px] leading-6">
               Напишите нам в Telegram <br /> или WhatsApp какую вещь <br />{" "}
               хотите купить
             </span>
@@ -54,8 +54,8 @@ export const ValueCalculate: React.FC<Props> = ({ className }) => {
         </div>
 
         <Link href="/calculation">
-          <Button variant="default" className=" p-8 gap-4 mt-12">
-            <span className="font-extrabold text-[12px]">
+          <Button variant="blackandwhite" className=" p-8 gap-4 mt-12">
+            <span className="font-extrabold text-white text-[12px]">
               РАССЧИТАТЬ СТОИМОСТЬ
             </span>
             <ChevronRight />

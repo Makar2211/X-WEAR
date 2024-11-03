@@ -20,7 +20,7 @@ export const CheckoutSummary: React.FC<Props> = ({
   return (
     <div
       className={cn(
-        "relative flex flex-col  rounded border-[1px] border-[#E9EAEE] p-5 min-h-[550px] w-[35%]",
+        "relative flex flex-col  rounded border-[1px] border-[#E9EAEE] p-5 min-h-[550px] w-[35%] max-[1200px]:w-full max-sm:p-2",
         className
       )}
     >
@@ -46,7 +46,7 @@ export const CheckoutSummary: React.FC<Props> = ({
                 height={100}
                 alt={item.product.name}
               />
-              <span>{item.product.name}</span>
+              <span className="max-sm:text-[13px]">{item.product.name}</span>
             </div>
             <div className="flex flex-col items-end">
               <span>Цена за 1 шт. {item.product.price} ₴ </span>
@@ -55,7 +55,7 @@ export const CheckoutSummary: React.FC<Props> = ({
           </li>
         ))}
       </ul>
-      <div className="absolute bottom-0">
+      <div className="absolute bottom-0 transform max-[1200px]:left-1/2 max-[1200px]:-translate-x-1/2 max-md:w-full">
         <div className="flex items-center justify-start gap-3 mb-3">
           <div className="relative flex items-center justify-center w-20 h-20 bg-[#F9F9F9] rounded-[8px] border-[1px] border-[#49D0FF]">
             <Image
@@ -70,10 +70,10 @@ export const CheckoutSummary: React.FC<Props> = ({
             />
           </div>
           <div>
-            <h4 className="font-bold text-[18px] text-[#303030]">
+            <h4 className="font-bold text-[18px] text-[#303030] max-md:text-[16px]">
               Оплата онлайн
             </h4>
-            <span className="text-[#636369]">
+            <span className="text-[#636369] max-md:text-[12px]">
               Оплата выбранного товара на нашем сайте <br /> осуществляется
               только онлайн.
             </span>

@@ -2,6 +2,7 @@ import { getUserCart } from "@/shared/lib/get-user-cart";
 import { getUseInfo } from "@/shared/lib/get-user-info";
 import { NextResponse, NextRequest } from "next/server";
 import { prisma } from "../../../../../prisma/prisma-client";
+import { updateTotalAmountCart } from "@/shared/lib/update-total-amount-cart";
 
 export async function POST(request: NextRequest) {
   const { productItemId, size } = await request.json();
@@ -65,7 +66,9 @@ export async function POST(request: NextRequest) {
         totalAmount: cart.totalAmount + addedAmount,
       },
     });
-    return NextResponse.json(updatedCartItem);
+
+    const updateCart = await updateTotalAmountCart().then((res) => res?.json());
+    return NextResponse.json(updateCart);
   } catch (error) {
     console.error("ошибка при добавлении в корзину", error);
     return NextResponse.json({

@@ -41,7 +41,7 @@ export const useCartStore = create<CartState>((set, get) => ({
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/cart/get`,
         {
-          cache: "no-store",
+          cache: "no-cache",
           method: "GET",
           headers: {
             "Content-Type": "application/json",

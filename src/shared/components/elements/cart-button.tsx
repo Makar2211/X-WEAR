@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import { ChevronRight } from "lucide-react";
 import { cn } from "../../lib/utils";
 import toast from "react-hot-toast";
-import { useCartStore } from "../../store/cart";
+import { useCart } from "@/shared/hooks";
 
 interface Props {
   className?: string;
@@ -18,7 +18,7 @@ export const CartButton: React.FC<Props> = ({
   product,
   selectedSize,
 }) => {
-  const { addCartItem } = useCartStore((state) => state);
+  const { addCartItem } = useCart();
 
   const handleToCart = async () => {
     if (!selectedSize) {

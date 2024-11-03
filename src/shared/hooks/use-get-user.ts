@@ -3,7 +3,7 @@ import React from "react";
 
 export const useGetUser = () => {
   const [userData, setUserData] = React.useState<null | User>(null);
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
   React.useEffect(() => {
     (async () => {
       try {
@@ -19,6 +19,7 @@ export const useGetUser = () => {
         );
         const userData = await response.json();
         setUserData(userData);
+        setIsLoading(false)
       } catch (error) {
         console.error("Ошибка при получении пользователя:", error);
       } finally {

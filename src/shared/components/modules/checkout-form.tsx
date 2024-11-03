@@ -23,16 +23,16 @@ export const CheckoutForm: React.FC = () => {
   } = useCheckout();
 
   return (
-    <div className="flex  justify-start items-start gap-8 mt-10 mb-10">
+    <div className="flex  justify-start items-start gap-8 mt-10 mb-10 max-[1200px]:flex-col">
       <form
         id="checkout-form"
         onSubmit={handleSubmitCheckout(onSubmitCheckout)}
-        className="rounded border-[1px] border-[#E9EAEE] p-5 w-[65%] "
+        className="rounded border-[1px] border-[#E9EAEE] p-5 w-[65%] max-[1200px]:w-full max-sm:p-2"
       >
         <h3 className="font-bold text-[23px] uppercase text-[#303030] mb-6">
           Платежные реквизиты
         </h3>
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-5 max-[650px]:flex-col max-[650px]:gap-0">
           <CustomInput
             label="Имя:"
             placeholder="Ваше имя"
@@ -72,7 +72,7 @@ export const CheckoutForm: React.FC = () => {
           type="text"
           errorMessage={errorsCheckout?.street?.message}
         />
-        <div className="grid grid-cols-2 grid-rows-3 gap-5">
+        <div className="grid grid-cols-2 grid-rows-3 gap-5 max-[650px]:grid-cols-1 max-[650px]:grid-rows-6 max-[650px]:gap-0">
           <CustomInput
             label="Номер дома / квартиры"
             placeholder="Введите номер дома и квартиры"

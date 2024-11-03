@@ -35,13 +35,16 @@ export async function POST(request: NextRequest) {
         if (orderId && cartId) {
           await prisma.checkout.update({
             where: { id: orderId },
-            data: { status: OrderStatus.CANCELLED },
+            data: { status: OrderStatus.SUCCEEDED },
           });
           await prisma.cartItem.deleteMany({
             where: { cartId: cartId },
           });
-          await prisma.cart.delete({
+          await prisma.cart.update({
             where: { id: cartId },
+            data: {
+              totalAmount: 0,
+            },
           });
 
           console.log(

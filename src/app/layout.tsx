@@ -3,6 +3,7 @@ import { Nunito } from "next/font/google";
 import "./globals.scss";
 import Template from "./template";
 import { Footer, Header } from "../shared/components/modules";
+import { Suspense } from "react";
 
 const notino = Nunito({ subsets: ["cyrillic"] });
 
@@ -21,7 +22,9 @@ export default function RootLayout({
       <body className={`${notino.className}`}>
         <link rel="icon" href="/img/favicon.ico" />
         <Template>
-          <Header />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Header />
+          </Suspense>
           {children}
           <Footer />
         </Template>

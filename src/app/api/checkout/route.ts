@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
       });
 
       if (existingAddress) {
-        throw new Error("Адрес с такими данными уже существует в базе данных");
+        throw new Error("У вас уже есть такой адрес");
       }
 
       adress = await prisma.adress.create({
@@ -56,7 +56,6 @@ export async function POST(request: NextRequest) {
         },
       });
     }
-
     const order = await prisma.checkout.create({
       data: {
         userId: user.id,
@@ -93,5 +92,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ url: session.url });
   } catch (error) {
     console.error("При оплате товаров произошла ошибка", error);
+    return NextResponse.error();
   }
 }

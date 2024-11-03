@@ -65,7 +65,6 @@ export async function POST(request: NextRequest) {
         totalAmount: cart.totalAmount + addedAmount,
       },
     });
-    console.log("updatedCartItem", updatedCartItem);
     return NextResponse.json(updatedCartItem);
   } catch (error) {
     console.error("ошибка при добавлении в корзину", error);

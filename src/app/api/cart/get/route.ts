@@ -38,5 +38,6 @@ export async function GET() {
     return NextResponse.json(cart);
   } catch (error) {
     console.error("При получении корзины пользователя произошла ошибка");
+    return NextResponse.error();
   }
 }

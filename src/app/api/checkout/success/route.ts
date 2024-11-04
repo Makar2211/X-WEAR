@@ -50,10 +50,10 @@ export async function POST(request: NextRequest) {
           //   react: "",
           // });
           await prisma.cartItem.deleteMany({
-            where: { cartId: 1 },
+            where: { cartId: Number(cartId) },
           });
           await prisma.cart.update({
-            where: { id: 1 },
+            where: { id: Number(cartId) },
             data: {
               totalAmount: 0,
             },

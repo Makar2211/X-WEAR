@@ -6,6 +6,7 @@ import { getUseInfo } from "@/shared/lib/get-user-info";
 import ReactDOMServer from "react-dom/server";
 import { getUserCart } from "@/shared/lib/get-user-cart";
 import { OrderStatus } from "@prisma/client";
+import {CheckoutTeamplate} from "@/shared/components/elements";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 const resend = new Resend(process.env.RESEND_API_KEY!);
@@ -43,14 +44,14 @@ export async function POST(request: NextRequest) {
             data: { status: OrderStatus.SUCCEEDED },
           });
 
-          // await resend.emails.send({
-          //   from: "onboarding@resend.dev",
-          //   to: "makardovgopolji@gmail.com",
-          //   subject: `Спасибо за заказ №${orderId} на сумму ${cart.totalAmount} ₴ на сайте X-WEAR на сайте X-WEAR`,
-          //   react: "",
-          // });
+          await resend.emails.send({
+            from: "onboarding@resend.dev",
+            to: user.email,
+            subject: `Спасибо за заказ №${orderId} на сумму ${cart.totalAmount} ₴ на сайте X-WEAR на сайте X-WEAR`,
+            react: CheckoutTeamplate({cart}),
+          });
           await prisma.cartItem.deleteMany({
-            where: { cartId: Number(cartId) },
+            where: {cartId: Number(cartId) },
           });
           await prisma.cart.update({
             where: { id: Number(cartId) },

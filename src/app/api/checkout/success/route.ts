@@ -5,7 +5,7 @@ import { Resend } from "resend";
 import { getUseInfo } from "@/shared/lib/get-user-info";
 import ReactDOMServer from "react-dom/server";
 import { getUserCart } from "@/shared/lib/get-user-cart";
-import {OrderStatus} from "@prisma/client";
+import { OrderStatus } from "@prisma/client";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 const resend = new Resend(process.env.RESEND_API_KEY!);
@@ -25,9 +25,7 @@ export async function POST(request: NextRequest) {
       );
     } catch (error) {
       console.error("Webhook signature verification failed:", error);
-      return NextResponse.json(
-        { error: "Webhook verification failed" },
-      );
+      return NextResponse.json({ error: "Webhook verification failed" });
     }
 
     if (event.type === "checkout.session.completed") {
@@ -45,19 +43,20 @@ export async function POST(request: NextRequest) {
             data: { status: OrderStatus.SUCCEEDED },
           });
 
-          await resend.emails.send({
-            from: "onboarding@resend.dev",
-            to: "makardovgopolji@gmail.com",
-            subject: `Спасибо за заказ №${orderId} на сумму ${cart.totalAmount} ₴ на сайте X-WEAR на сайте X-WEAR`,
-            react: "",
-          });
+          // await resend.emails.send({
+          //   from: "onboarding@resend.dev",
+          //   to: "makardovgopolji@gmail.com",
+          //   subject: `Спасибо за заказ №${orderId} на сумму ${cart.totalAmount} ₴ на сайте X-WEAR на сайте X-WEAR`,
+          //   react: "",
+          // });
           await prisma.cartItem.deleteMany({
-            where: { cartId: cartId },
+            where: { cartId: 1 },
           });
           await prisma.cart.update({
-            where: { id: cartId },
+            where: { id: 1 },
             data: {
               totalAmount: 0,
+              items: []
             },
           });
 

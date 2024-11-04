@@ -44,12 +44,12 @@ export async function POST(request: NextRequest) {
             data: { status: OrderStatus.SUCCEEDED },
           });
 
-          await resend.emails.send({
-            from: "onboarding@resend.dev",
-            to: user.email,
-            subject: `Спасибо за заказ №${orderId} на сумму ${cart.totalAmount} ₴ на сайте X-WEAR на сайте X-WEAR`,
-            react: CheckoutTeamplate({cart}),
-          });
+          // await resend.emails.send({
+          //   from: "onboarding@resend.dev",
+          //   to: user.email,
+          //   subject: `Спасибо за заказ №${orderId} на сумму ${cart.totalAmount} ₴ на сайте X-WEAR на сайте X-WEAR`,
+          //   react: CheckoutTeamplate({cart}),
+          // });
           await prisma.cartItem.deleteMany({
             where: {cartId: Number(cartId) },
           });

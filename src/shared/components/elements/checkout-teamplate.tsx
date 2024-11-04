@@ -6,15 +6,15 @@ import Image from "next/image";
 interface IPropCheckoutEmail {
     cart: CartDTO
 }
-const CheckoutTeamplate: React.FC<IPropCheckoutEmail> = ({cart}) => {
+export const CheckoutTeamplate: React.FC<IPropCheckoutEmail> = ({cart}) => {
     return (
         <div>
             <p>Ваши товары:</p>
             <ul>
                 {
                     cart.items.map((item: IProductsCart) => (
-                        <li className='flex justify-between items-center'>
-                            <span className='w-[100px] h-[100px]'><img  src={item.product.imageUrl[0]} alt={item.product.name}/></span>
+                        <li className='flex justify-between items-center' key={item.product.id}>
+                            <span className='w-[100px] h-[100px]'><Image width={100} height={100} src={item.product.imageUrl[0]} alt={item.product.name}/></span>
 
                         </li>
                     ))
@@ -23,5 +23,3 @@ const CheckoutTeamplate: React.FC<IPropCheckoutEmail> = ({cart}) => {
         </div>
     );
 };
-
-export default CheckoutTeamplate;

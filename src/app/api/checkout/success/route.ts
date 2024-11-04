@@ -56,7 +56,6 @@ export async function POST(request: NextRequest) {
             where: { id: 1 },
             data: {
               totalAmount: 0,
-              items: []
             },
           });
 

@@ -7,6 +7,7 @@ import Link from "next/link";
 import {EditProfile} from "./edit-profile";
 import {useGetUser} from "@/shared/hooks";
 import {signOut} from "next-auth/react";
+import {MyDeliveres} from "@/shared/components/elements/profile/my-deliveres";
 
 interface Props {
     className?: string;
@@ -17,7 +18,7 @@ export const MyProfile: React.FC<Props> = ({className}) => {
     return (
         <div className={className}>
             <h3 className="text-[22px] font-semibold mb-3">
-                {user?.name === undefined
+                {user?.name === null
                     ? "Приветствуем, незнакомец!"
                     : `Приветствуем, ${user?.name}!`}
             </h3>
@@ -40,7 +41,7 @@ export const MyProfile: React.FC<Props> = ({className}) => {
                             height={19}
                             alt="orders"
                         />
-                        <span className=" text-black">Мои заказы</span>
+                        <span className=" text-black">История заказов</span>
                     </TabsTrigger>
                     <TabsTrigger value="addresses" className="my-profile-tabs-trigger">
                         <Image
@@ -87,6 +88,9 @@ export const MyProfile: React.FC<Props> = ({className}) => {
                 </TabsList>
                 <TabsContent value="edit">
                     <EditProfile/>
+                </TabsContent>
+                <TabsContent value="orders">
+                    <MyDeliveres isPage={false}/>
                 </TabsContent>
             </Tabs>
         </div>

@@ -13,3 +13,4 @@ export { getSize } from "./get-size";
 export { getCategory } from "./get-category";
 
 export { getSneakersProducts } from "./get-sneakers";
+

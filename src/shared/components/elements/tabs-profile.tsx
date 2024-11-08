@@ -3,7 +3,7 @@ import React from "react";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "../ui/tabs";
 import Image from "next/image";
 import {LogOut} from "./log-out";
-import {EditProfile, MyProfile} from "./profile";
+import {EditProfile, MyDeliveres, MyProfile} from "./profile";
 import {cn} from "../../lib/utils";
 import {signOut} from "next-auth/react";
 import {useMedia} from "react-use";
@@ -72,22 +72,7 @@ export const TabsProfile: React.FC<Props> = ({className}) => {
                     />
                     <span className=" text-black">История заказов</span>
                 </TabsTrigger>
-                <TabsTrigger
-                    value="orders"
-                    className={`${
-                        isMedia1024
-                            ? "items-tabs-trigger w-full gap-1"
-                            : "profile-tabs-trigger"
-                    }`}
-                >
-                    <Image
-                        src="/profile/profile-order.svg"
-                        width={19}
-                        height={19}
-                        alt="orders"
-                    />
-                    <span className=" text-black">Мои заказы</span>
-                </TabsTrigger>
+
                 <TabsTrigger
                     value="addresses"
                     className={`${
@@ -118,7 +103,7 @@ export const TabsProfile: React.FC<Props> = ({className}) => {
                         height={19}
                         alt="edit-addresses"
                     />
-                    <span className=" text-black">Редаквтировать адреса</span>
+                    <span className=" text-black">Редактировать адреса</span>
                 </TabsTrigger>
                 <TabsTrigger
                     onClick={() => signOut({callbackUrl: "/"})}
@@ -137,6 +122,9 @@ export const TabsProfile: React.FC<Props> = ({className}) => {
             </TabsContent>
             <TabsContent className="w-full" value="edit">
                 <EditProfile/>
+            </TabsContent>
+            <TabsContent className="w-full" value="history">
+                <MyDeliveres isPage={true}/>
             </TabsContent>
         </Tabs>
     );

@@ -13,7 +13,7 @@ export { SwiperBlog } from "./home/swiper-blog";
 export { ProductItem } from "./productItem";
 export { CatalogHeader } from "./catalog-header";
 
-export { CatalogPagination } from "./catalog-pagination";
+export { CustomPagination } from "./custom-pagination";
 export { SwiperItemImg } from "./swiper-item-img";
 export { SelectSize } from "./select-size";
 export { CartButton } from "./cart-button";

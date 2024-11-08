@@ -1,8 +1,9 @@
 "use client";
 import { cn } from "../../lib/utils";
 import { Product } from "@prisma/client";
-import { CatalogHeader, CatalogPagination, ProductItem } from "../elements";
+import {CatalogHeader, CustomPagination,  ProductItem} from "../elements";
 import React from "react";
+import {usePagination} from "@/shared/hooks";
 
 interface Props {
   className?: string;
@@ -18,8 +19,9 @@ export const CatalogItems: React.FC<Props> = ({
   loading,
 }) => {
   const rowsPerPage = 9;
-  const [startIndex, setStartIndex] = React.useState(0);
-  const [endIndex, setEndIndex] = React.useState(rowsPerPage);
+    const { startIndex, endIndex, setStartIndex, setEndIndex, currentPage, totalPages, handlePageChange  } = usePagination({products, rowsPerPage})
+
+    console.log(startIndex, endIndex, "catalogItems")
 
   return (
     <section className={cn("w-full  relative", className)}>
@@ -38,14 +40,11 @@ export const CatalogItems: React.FC<Props> = ({
         ))}
       </div>
       {products.length > rowsPerPage && (
-        <CatalogPagination
+        <CustomPagination
           /* className="absolute bottom-4 left-1/2" */
-          rowsPerPage={rowsPerPage}
-          startIndex={startIndex}
-          setStartIndex={setStartIndex}
-          endIndex={endIndex}
-          setEndIndex={setEndIndex}
-          products={products}
+            currentPage={currentPage}
+            handlePageChange={handlePageChange}
+            totalPages={totalPages}
         />
       )}
     </section>

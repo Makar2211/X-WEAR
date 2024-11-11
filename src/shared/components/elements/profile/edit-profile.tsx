@@ -22,7 +22,7 @@ export const EditProfile: React.FC<Props> = ({ className }) => {
       <h3 className="text-[22px] font-semibold mb-3">Редактирование профиля</h3>
       <form
         onSubmit={updateSubmit}
-        className="grid grid-cols-2 grid-rows-2 gap-5"
+        className="grid grid-cols-2 grid-rows-2 gap-5 max-sm:grid-rows-1 max-sm:grid-cols-1 max-sm:gap-0"
       >
         <CustomInput
           label="Ваше имя:"

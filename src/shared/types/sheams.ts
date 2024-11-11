@@ -41,7 +41,7 @@ export const UpdateUserSchema = z.object({
   }),
   name: z.string().min(2, { message: "Обязательное поле" }),
   last_name: z.string().min(2, { message: "Обязательное поле" }),
-  phone: z.string(),
+  phone: z.string().min(10, {message: "Обязательное поле" }),
 });
 
 export type UpdateUserData = z.infer<typeof UpdateUserSchema>;

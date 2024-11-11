@@ -89,7 +89,7 @@ export const CheckoutSummary: React.FC<Props> = ({
           variant="blackandwhite"
           className="w-full h-[56px] p-0 mb-3"
           type="submit"
-          form="checkout-form"
+          form="custom-form"
         >
           Оформить заказ
         </Button>

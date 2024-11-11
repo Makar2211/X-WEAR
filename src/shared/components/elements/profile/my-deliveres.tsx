@@ -9,17 +9,17 @@ interface IPropsMyProfile {
     isPage: boolean
 }
 export const MyDeliveres: React.FC<IPropsMyProfile> = ({isPage}) => {
-    const [checkout, setAddresses] = useState<Checkout[]>([])
+    const [checkout, setCheckout] = useState<Checkout[]>([])
 
     useEffect(() => {
         (async () => {
             try {
-                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/user/addresses`)
+                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/user/checkout`)
                 if (!response.ok) {
                     throw new Error()
                 }
                 const data = await response.json()
-                setAddresses(data)
+                setCheckout(data)
             } catch (e) {
                 console.error("Ошибка получении заказов", e)
             }
@@ -63,7 +63,7 @@ export const MyDeliveres: React.FC<IPropsMyProfile> = ({isPage}) => {
                    </TableBody>
                </Table>
                {
-                   isPage && (
+                   checkout.length > rowsPerPage && isPage && (
                        <CustomPagination
                            className={ "mt-4 justify-start items-start"}
                            currentPage={currentPage}

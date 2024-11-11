@@ -1,9 +1,9 @@
 "use client";
-import React from "react";
+import React, {useState} from "react";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "../ui/tabs";
 import Image from "next/image";
 import {LogOut} from "./log-out";
-import {EditProfile, MyDeliveres, MyProfile} from "./profile";
+import {EditProfile, MyDeliveres, AddProfile, MyAddresses, AddAddresses} from "./profile";
 import {cn} from "../../lib/utils";
 import {signOut} from "next-auth/react";
 import {useMedia} from "react-use";
@@ -14,6 +14,8 @@ interface Props {
 
 export const TabsProfile: React.FC<Props> = ({className}) => {
     const isMedia1024 = useMedia("(max-width: 1023px)");
+
+
     return (
         <Tabs
             defaultValue="account"
@@ -21,6 +23,7 @@ export const TabsProfile: React.FC<Props> = ({className}) => {
                 "flex justify-start items-start gap-5 mt-5 max-lg:flex-col",
                 className
             )}
+
         >
             <TabsList
                 className="flex w-[320px] flex-col gap-5 py-3 items-start rounded border border-[#E9EAEE] relative max-lg:w-full max-lg:flex-row max-lg:overflow-auto max-lg:scrollbar max-lg:gap-10 max-lg:ml-2">
@@ -103,7 +106,7 @@ export const TabsProfile: React.FC<Props> = ({className}) => {
                         height={19}
                         alt="edit-addresses"
                     />
-                    <span className=" text-black">Редактировать адреса</span>
+                    <span className=" text-black">Добавить адрес</span>
                 </TabsTrigger>
                 <TabsTrigger
                     onClick={() => signOut({callbackUrl: "/"})}
@@ -118,13 +121,19 @@ export const TabsProfile: React.FC<Props> = ({className}) => {
                 </TabsTrigger>
             </TabsList>
             <TabsContent className="w-full" value="account">
-                <MyProfile/>
+                <AddProfile/>
             </TabsContent>
             <TabsContent className="w-full" value="edit">
                 <EditProfile/>
             </TabsContent>
             <TabsContent className="w-full" value="history">
                 <MyDeliveres isPage={true}/>
+            </TabsContent>
+            <TabsContent className="w-full" value="addresses">
+                <MyAddresses isPage={true}/>
+            </TabsContent>
+            <TabsContent className="w-full" value="edit-addresses">
+                <AddAddresses/>
             </TabsContent>
         </Tabs>
     );

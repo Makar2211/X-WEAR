@@ -8,12 +8,13 @@ import {EditProfile} from "./edit-profile";
 import {useGetUser} from "@/shared/hooks";
 import {signOut} from "next-auth/react";
 import {MyDeliveres} from "@/shared/components/elements/profile/my-deliveres";
+import {MyAddresses} from "@/shared/components/elements/profile/my-addresses";
 
 interface Props {
     className?: string;
 }
 
-export const MyProfile: React.FC<Props> = ({className}) => {
+export const AddProfile: React.FC<Props> = ({className}) => {
     const {user} = useGetUser();
     return (
         <div className={className}>
@@ -91,6 +92,9 @@ export const MyProfile: React.FC<Props> = ({className}) => {
                 </TabsContent>
                 <TabsContent value="orders">
                     <MyDeliveres isPage={false}/>
+                </TabsContent>
+                <TabsContent value="addresses">
+                    <MyAddresses isPage={false}/>
                 </TabsContent>
             </Tabs>
         </div>

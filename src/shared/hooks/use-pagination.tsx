@@ -1,8 +1,9 @@
 import React from "react";
-import { Checkout, Product} from "@prisma/client";
+import {Adress, Checkout, Product} from "@prisma/client";
+import {Address} from "@/shared/components/elements/profile/my-addresses";
 
 interface IPropsPagination {
-    products: (Product | Checkout)[];
+    products: (Product | Checkout | Address)[];
     rowsPerPage: number
 }
 

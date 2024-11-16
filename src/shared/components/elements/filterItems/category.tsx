@@ -29,12 +29,12 @@ export const CategoryFilter: React.FC<Props> = ({
       type="single"
       collapsible
       className={cn(
-        "w-full border border-[#E6E7EB] rounded-[6px]  py-2",
+        "w-full border border-[#E6E7EB] rounded-[6px]  py-[5px]",
         className
       )}
     >
       <AccordionItem value="categoty" className="border-b-[0px]">
-        <AccordionTrigger className="flex items-center justify-between font-black text-[14px] px-5 text-black">
+        <AccordionTrigger className="flex items-center justify-between font-black text-[14px] px-5 pt-2 text-black">
           КАТЕГОРИИ
         </AccordionTrigger>
         <AccordionContent>

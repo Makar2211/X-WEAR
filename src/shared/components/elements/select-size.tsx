@@ -23,6 +23,7 @@ export const SelectSize: React.FC<Props> = ({ className, product }) => {
       setSelectedSize(size);
     }
   };
+
   return (
     <>
       <div className={cn("max-[675px]:mt-4", className)}>

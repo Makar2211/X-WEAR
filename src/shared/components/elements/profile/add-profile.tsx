@@ -9,19 +9,30 @@ import {useGetUser} from "@/shared/hooks";
 import {signOut} from "next-auth/react";
 import {MyDeliveres} from "@/shared/components/elements/profile/my-deliveres";
 import {MyAddresses} from "@/shared/components/elements/profile/my-addresses";
+import {Skeleton} from "@/shared/components/ui/skeleton";
 
 interface Props {
     className?: string;
 }
 
 export const AddProfile: React.FC<Props> = ({className}) => {
-    const {user} = useGetUser();
+    const {user, userLoading} = useGetUser();
     return (
         <div className={className}>
             <h3 className="text-[22px] font-semibold mb-3">
-                {user?.name === null
-                    ? "Приветствуем, незнакомец!"
-                    : `Приветствуем, ${user?.name}!`}
+                {
+                    userLoading ? (
+                        <Skeleton className='w-[250px] h-6 rounded'/>
+                    ) : (
+                        <>
+                            {user?.name === undefined
+                                ? "Приветствуем, незнакомец!"
+                                : `Приветствуем, ${user?.name}!`}
+                        </>
+                    )
+
+                }
+
             </h3>
             <Tabs>
                 <TabsList className="grid w-full grid-cols-3 grid-rows-2 gap-5 max-md:grid-cols-2">
@@ -32,7 +43,7 @@ export const AddProfile: React.FC<Props> = ({className}) => {
                             height={19}
                             alt="account"
                         />
-                        <span className=" text-black">Мой аккаунт</span>
+                        <span className=" text-black max-sm:text-[13px]">Мой аккаунт</span>
                     </TabsTrigger>
 
                     <TabsTrigger value="orders" className="my-profile-tabs-trigger ">
@@ -42,7 +53,7 @@ export const AddProfile: React.FC<Props> = ({className}) => {
                             height={19}
                             alt="orders"
                         />
-                        <span className=" text-black">История заказов</span>
+                        <span className=" text-black max-sm:text-[13px]">История заказов</span>
                     </TabsTrigger>
                     <TabsTrigger value="addresses" className="my-profile-tabs-trigger">
                         <Image
@@ -51,7 +62,7 @@ export const AddProfile: React.FC<Props> = ({className}) => {
                             height={19}
                             alt="addresses"
                         />
-                        <span className=" text-black">Адреса</span>
+                        <span className=" text-black max-sm:text-[13px]">Адреса</span>
                     </TabsTrigger>
                     <TabsTrigger value="edit" className="my-profile-tabs-trigger">
                         <Image
@@ -60,25 +71,9 @@ export const AddProfile: React.FC<Props> = ({className}) => {
                             height={19}
                             alt="edit"
                         />
-                        <span className=" text-black">Редактировать профиль</span>
+                        <span className=" text-black max-sm:text-[13px]">Редактировать профиль</span>
                     </TabsTrigger>
-                    <TabsTrigger
-                        value="edit-addresses"
-                        className="my-profile-tabs-trigger"
-                    >
-                        <Link
-                            href="/favourites"
-                            className="flex flex-col justify-center items-center"
-                        >
-                            <Image
-                                src="/profile/profile-edit-addresses.svg"
-                                width={19}
-                                height={19}
-                                alt="edit-addresses"
-                            />
-                            <span className=" text-black">Избранные товары</span>
-                        </Link>
-                    </TabsTrigger>
+
                     <TabsTrigger
                         value="logout"
                         onClick={() => signOut({callbackUrl: "/"})}

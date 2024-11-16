@@ -1,19 +1,16 @@
-import { Toaster } from "react-hot-toast";
-import { Footer, Header } from "../shared/components/modules";
-import { getAllFilters } from "../shared/services";
+import {getServerSession} from "next-auth";
+import {authOptions} from "@/shared/lib/authOptions";
+import {ClientSessionProvider} from "@/shared/providers/ClientSessionProvider";
 
 export default async function Template({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const { category: sneakersCategory } = await getAllFilters({
-    categoryItem: "sneakers",
-  });
+  const session = await getServerSession(authOptions)
   return (
-    <>
-      {children}
-      <Toaster />
-    </>
+      <ClientSessionProvider session={session}>
+        {children}
+      </ClientSessionProvider>
   );
 }

@@ -35,7 +35,6 @@ export const ProductItem: React.FC<Props> = ({
           height={300}
           style={imageStryle}
         />
-        <Star className="absolute top-3 right-3 cursor-pointer" />
       </div>
 
       <div className="flex flex-col items-start">

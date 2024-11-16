@@ -6,6 +6,8 @@ import { ChevronRight } from "lucide-react";
 import { cn } from "../../lib/utils";
 import toast from "react-hot-toast";
 import { useCart } from "@/shared/hooks";
+import {useSession} from "next-auth/react";
+import {useRouter} from "next/navigation";
 
 interface Props {
   className?: string;
@@ -18,9 +20,17 @@ export const CartButton: React.FC<Props> = ({
   product,
   selectedSize,
 }) => {
+  const router = useRouter()
+  const { status} = useSession()
+
   const { addCartItem } = useCart();
 
+  console.log('status', status)
+
   const handleToCart = async () => {
+    if( status === "unauthenticated") {
+      return router.push('/sign-in')
+    }
     if (!selectedSize) {
       toast.error("Выберите размер");
     } else {

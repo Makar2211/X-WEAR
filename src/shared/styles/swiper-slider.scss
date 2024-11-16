@@ -14,7 +14,8 @@
 }
 
 .sneakers-pagination,
-.blog-pagination {
+.blog-pagination,
+.clothes-pagination,{
 	display: flex;
 	align-items: center;
 	gap: 15px;
@@ -42,7 +43,8 @@
 }
 
 .sneakers-custom-bullet,
-.blog-custom-bullet {
+.blog-custom-bullet,
+.clothes-custom-bullet{
 	display: block;
 	border-radius: 9999px;
 	width: 6px;
@@ -58,7 +60,8 @@
 }
 
 .sneakers-custom-bullet-active,
-.blog-custom-bullet-active {
+.blog-custom-bullet-active,
+.clothes-custom-bullet-active{
 	display: block;
 	width: 10px;
 	height: 10px;

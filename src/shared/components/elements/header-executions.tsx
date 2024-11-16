@@ -43,10 +43,6 @@ export const HeaderExecutions: React.FC<Props> = ({
           }`}
         />
       )}
-
-      <Link href="/favourites">
-        <Star className="text-white hover:text-blue-500 cursor-pointer duration-200" />
-      </Link>
       <Link href="/profile">
         <User className="text-white hover:text-blue-500 cursor-pointer duration-200" />
       </Link>

@@ -14,3 +14,6 @@ export { getCategory } from "./get-category";
 
 export { getSneakersProducts } from "./get-sneakers";
 
+export {getClothesProducts} from './get-clothes'
+
+export {getSwiperClothesCategory} from './get-swiper-clothes-category'

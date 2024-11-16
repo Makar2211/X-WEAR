@@ -26,9 +26,10 @@ export const SwiperSection: React.FC<Props> = ({
   url,
   more,
   items,
+
 }) => {
   return (
-    <Container className="py-10 px-16 max-lg:py-6 max-lg:px-8 max-[425px]:px-3 max-[425px]:py-4">
+    <Container className={cn("px-16 max-lg:py-6 max-lg:px-8 max-[425px]:px-3 max-[425px]:py-4", className)}>
       <section className={cn("mt-10", className)}>
         {/* вернхний блок */}
         <div className="flex items-center justify-between">

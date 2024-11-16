@@ -6,7 +6,7 @@ import {
   NavBarTop,
   HeaderExecutions,
   MobileMenu,
-  HeaderSearch,
+  HeaderSearch, HeaderSkeleton,
 } from "../elements";
 import Image from "next/image";
 import Link from "next/link";
@@ -65,7 +65,7 @@ export const Header: React.FC<Props> = ({ className }) => {
 
   return (
     <>
-      {isClient && (
+      {isClient ? (
         <header className="bg-black h-24 px-8 py-6 max-md:px-4 sticky top-0 z-50 ">
           <Container className="flex justify-between items-center h-full">
             {!isMedia768 ? (
@@ -114,7 +114,7 @@ export const Header: React.FC<Props> = ({ className }) => {
             />
           </Container>
         </header>
-      )}
+      ) : <HeaderSkeleton />}
     </>
   );
 };

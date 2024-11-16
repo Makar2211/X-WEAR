@@ -60,7 +60,7 @@ export const SwiperItems: React.FC<Props> = ({
             <ProductItem
               item={item}
               className="flex"
-              url_secrtion={"sneakers"}
+              url_secrtion={"clothes"}
             />
           </SwiperSlide>
         ))}

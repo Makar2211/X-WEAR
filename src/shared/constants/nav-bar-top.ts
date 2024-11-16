@@ -17,11 +17,11 @@ export const navBar = [
   {
     name: "Обувь",
     items: [
-      { name: "Кроссовки", href: "/sneakers/?krossovki" },
-      { name: "Кеды", href: "/sneakers/?cedi" },
-      { name: "Лофферы", href: "/sneakers/?lofferi" },
-      { name: "Сандали", href: "/sneakers/?sandali" },
-      { name: "Шлепки", href: "/sneakers/?shlepki" },
+      { name: "Кроссовки", href: "/sneakers/?category=krosovki" },
+      { name: "Кеды", href: "/sneakers/?category=kedi" },
+      { name: "Ботинки", href: "/sneakers/?category=botinki" },
+      { name: "Зимняя", href: "/sneakers/?category=zimnaya" },
+      { name: "Шлепки", href: "/sneakers/?category=shlepki" },
     ],
   },
   {

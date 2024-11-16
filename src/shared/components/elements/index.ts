@@ -28,4 +28,6 @@ export { EmptyCart } from "./empty-cart";
 export { CartItemSkeleton } from "./cart-item-skeleton";
 export { CountryInput } from "./country-input";
 export { CheckoutSummary } from "./checkout-summary";
-export {CheckoutTeamplate} from './checkout-teamplate'
+export {CheckoutTeamplate} from './checkout-teamplate';
+export {HeaderSkeleton} from './header-skeleton';
+export {FilterSkeleton} from './filter-skeleton'

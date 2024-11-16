@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import { CatalogHeader, Container } from "../../shared/components/elements";
 import { CatalogItems, Filter } from "../../shared/components/modules";
 import { getAllFilters, getSneakersProducts } from "../../shared/services";
-import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "X-WEAR | Обувь",
@@ -23,8 +22,9 @@ export default async function Sneakers({
   const { category, brands, models, size, colors } = await getAllFilters({
     categoryItem: "sneakers",
   });
+
   return (
-    <Container className="mt-10 mb-6">
+    <Container className="mt-10 mb-6 ">
       <div className="flex gap-5 max-[1450px]:mx-10 max-sm:mx-2 max-md:flex-col">
         {/* часть фильтрации */}
         <CatalogHeader
@@ -32,7 +32,6 @@ export default async function Sneakers({
           className="hidden max-md:flex"
           products={products}
         />
-        <Suspense fallback={<>Loading...</>}>
           <Filter
             className="w-[320px]"
             category={category}
@@ -41,7 +40,6 @@ export default async function Sneakers({
             size={size}
             colors={colors}
           />
-        </Suspense>
         {/* часть товаров */}
         <CatalogItems products={products} title="обувь" />
       </div>

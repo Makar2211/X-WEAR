@@ -6,3 +6,4 @@ export { useCart } from "./use-cart";
 export { useCheckout } from "./use-checkout";
 export {usePagination} from './use-pagination'
 export {useAddress} from './use-address'
+export {useHeaderCategory} from './use-header-category'

@@ -21,8 +21,6 @@ export const CatalogItems: React.FC<Props> = ({
   const rowsPerPage = 9;
     const { startIndex, endIndex, setStartIndex, setEndIndex, currentPage, totalPages, handlePageChange  } = usePagination({products, rowsPerPage})
 
-    console.log(startIndex, endIndex, "catalogItems")
-
   return (
     <section className={cn("w-full  relative", className)}>
       <CatalogHeader
@@ -34,7 +32,7 @@ export const CatalogItems: React.FC<Props> = ({
         {products.slice(startIndex, endIndex).map((product) => (
           <ProductItem
             key={product.id}
-            url_secrtion="sneakers"
+            url_secrtion="clothes"
             item={product}
           />
         ))}
